@@ -1,3 +1,10 @@
+body{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  
+}
+
 img{
     width: 200px;
     height: 200px;
@@ -7,23 +14,31 @@ ul{
     list-style-type: none;
     margin:0;
     padding: 0;
+    display:flex;
+    border-style: solid;
+    gap: 10 px;
 }
 li{
     text-decoration: none;
 }
 
+
 .box1{
     background-color: #1F2937;
     border: 1px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    border-style: solid; 
+    
 
 }
 nav{
     color: #F9FAF8;
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    border-style: solid; 
 }
 
 button{
@@ -32,11 +47,23 @@ button{
 
 .box3{
     background-color: #E5E7EB;
+    border-style: solid; 
+    text-align: center;
 }
 
 footer{
     background-color: #1F2937;
     border: 1px;
     color: #F9FAF8;
+    align-items: center;
+    text-align: center;
+    border-style: solid; 
     
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    margin: 2px;
+    padding: 3px;
 }
