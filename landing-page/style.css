@@ -1,13 +1,43 @@
 body{
-    display: flex;
-    flex-direction: column;
-    flex: 1;  
+    display: flex;   
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-items: space-around;    
+    padding: 0px;
+    margin: 0px;
+}
+
+header, footer{
+    background-color: #1F2937;
+    color: #F9FAF8
+}
+
+h1{
+    font-size: 48px;
+    font-weight: extra-bold;    
+}
+
+blockquote{
+    background-color: #E5E7EB;
+    font-size: 36px;
+    font-weight: light;
+    color: #1F2937;
+}
+
+h2{
+    font-size: 36px;
+    font-weight: extra-bold;
+    color: #1F2937;
+}
+
+p.hero{
+    font-size: 24px;
 }
 
 img{
     width: 200px;
     height: 200px;
-    border-style: solid;
+    
 }
 
 a{
@@ -22,39 +52,42 @@ ul{
     margin:0;
     padding: 0;
     display:flex;
-    border-style: solid;
     gap: 10 px;
+    font-size: 18px;
+    color: #E5E7EB;
 }
 li{
     text-decoration: none;
 }
 
-button{
+button, div.box3{
     background-color: #3882F6;
 }
 
 header{
-    background-color: #1F2937;
+    
     border: 1px;
     display: flex;
     flex-direction: column;
-    border-style: solid;     
+    gap: 0;
+       
 
 }
+
 nav{
     color: #F9FAF8;
     display:flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    border-style: solid; 
+    justify-content: space-around;
+   
 }
 
-header.heading{
+div.heading{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    border-style: solid;
+    justify-content: space-around;
+    
 }
 
 .box2{
@@ -71,18 +104,21 @@ header.heading{
 }
 
 .box3{
-    background-color: #E5E7EB;
-    border-style: solid; 
+    background-color: #E5E7EB; 
+    display:flex;  
     text-align: center;
+    padding: 20px;
+    margin: 40px;
+    justify-content: space-around;
 }
 
 footer{
-    background-color: #1F2937;
+    
     border: 1px;
     color: #F9FAF8;
     align-items: center;
     text-align: center;
-    border-style: solid; 
+   
     
 }
 
