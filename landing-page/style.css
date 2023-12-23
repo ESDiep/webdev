@@ -1,13 +1,20 @@
 body{
     display: flex;
     flex-direction: column;
-    flex: 1;
-  
+    flex: 1;  
 }
 
 img{
     width: 200px;
     height: 200px;
+    border-style: solid;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    margin: 2px;
+    padding: 3px;
 }
 
 ul{
@@ -22,14 +29,16 @@ li{
     text-decoration: none;
 }
 
+button{
+    background-color: #3882F6;
+}
 
-.box1{
+header{
     background-color: #1F2937;
     border: 1px;
     display: flex;
     flex-direction: column;
-    border-style: solid; 
-    
+    border-style: solid;     
 
 }
 nav{
@@ -41,8 +50,24 @@ nav{
     border-style: solid; 
 }
 
-button{
-    background-color: #3882F6;
+header.heading{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-style: solid;
+}
+
+.box2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.image{
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
 }
 
 .box3{
@@ -61,9 +86,3 @@ footer{
     
 }
 
-a{
-    text-decoration: none;
-    color: white;
-    margin: 2px;
-    padding: 3px;
-}
