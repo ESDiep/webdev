@@ -1,10 +1,11 @@
+//const { doc } = require("prettier");
 
 
 const ROCK = 1;
 const PAPER = 2;
 const SCISSOR = 3;
 
-const DATA = {"rock" : ROCK, "paper" : PAPER, "scissor" : SCISSOR};
+const DATA = {"Rock" : 1, "Paper" : 2, "Scissor" : 3};
 
 //randomly generate a number between 1 and 3
 function getComputerChoice(min, max ) {
@@ -59,17 +60,34 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game(){
-    let playerSelection;
-    let computer;
-    let result;
-    for(let x = 0; x <5; x++){
-        playerSelection = prompt("Please enter your choice: rock, paper or scissor: ").toLowerCase();
-        console.log(playerSelection, DATA[playerSelection]);
-        computer = getComputerChoice(1,4);
-        console.log("computer choice", computer);
-        result = playRound(DATA[playerSelection], computer);
-        console.log(result);
+    const btnName = ["Rock", "Paper", "Scissor"];
+    const body = document.querySelector("body");
+    const btnDiv = document.createElement("div");
+    btnDiv.setAttribute("class", "button");
+    body.appendChild( btnDiv);
+
+
+    const p = document.createElement("P");
+    body.appendChild(p);
+
+    for(let i = 0; i < 3; i++){
+        const btn = document.createElement("button");
+        btn.textContent = btnName[i];
+        btnDiv.appendChild(btn);
+        btn.addEventListener("click", (event) => {
+            console.log(event.target.textContent);
+            let playerChoice = DATA[event.target.textContent];
+            console.log(playerChoice);
+            let result = playRound(playerChoice,getComputerChoice(1,4));
+
+            
+            p.textContent = result;
+           
+
+        });
+
     }
+    
 
 }
 
