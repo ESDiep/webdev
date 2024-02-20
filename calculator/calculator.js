@@ -1,48 +1,68 @@
 
+
 function add(a, b ){
-    return a + b;
+    return Number(a) + Number(b);
 }
 
 function subtract(a, b){
-    return a - b;
+    return Number(a) - Number(b);
 }
 
 function multiply(a, b){
-    return a*b;
+    return Number(a)*Number(b);
 }
 
 function divide(a, b){
-    if(b !==0)
-        return a/b;
+    if(Number(b) === 0)
+    return "divide by 0";
     else
-        return "Can't divide by 0";
+    return Number(a)/Number(b);
 }
 
-function operator(operator, a, b){
+function operator(a,operator, b){
     if(operator === '+'){
-        add(a,b);
+       return add(a,b);
     }
     else if(operator === '-'){
-        subtract(a,b);
+        return subtract(a,b);
     }
     else if(operator === 'x'){
-        multiply(a,b);
+       return multiply(a,b);
     }
     else
-        divide(a,b);
+       return divide(a,b);
 }
 
-let button = [
-    ["AC", "C", "%", "/"],
+//set up the display screen of the calculator: 1 row for entry and 1 row for result
+const display = document.querySelector(".display");
+const entryP = document.createElement("p");
+entryP.setAttribute("id", "entry");
+const resultP = document.createElement("p");
+//resultP.setAttribute("class","temporary");
+display.appendChild(entryP);
+display.appendChild(resultP);
+
+
+//button data
+const button = [
+    ["AC", "+/-", "%", "/"],
     ["7", "8", "9", "+"],
     ["4", "5", "6", "-"],
     ["1", "2", "3", "x"],
     ["0", ".", "=", ""],
 ];
 
-console.log(button);
+let clickInput = [];
+let result = 0;
+let a, b, op, displayContent;
+let decimal ="";
+let digit = ".";
+let tempNum = "";
 
-const btnDiv = document.querySelector(".button");
+
+//console.log(button);
+
+const btnDiv = document.querySelector(".buttonContainer");
 
 //creating the button on the calculator
 for (let row = 0; row < button.length; row++){
@@ -59,8 +79,72 @@ for (let row = 0; row < button.length; row++){
             btn.setAttribute("ID", button[row][col]);
             rowDiv.appendChild(btn);
             
-            btn.addEventListener(display);
+            btn.addEventListener("click", (e)=>{
+                
+                if(e.target.textContent === "AC"){
+                    result ="";
+                    clickInput = [];
+                    displayContent = "";
+                    resultP.setAttribute("class","temporary");
+                }
+                else if(e.target.textContent === "+/-"){
+                    if(clickInput.length === 1){
+                        result = Number(clickInput.pop()) * (-1);
+                        clickInput.push(result);
+                    }
+
+                }
+                else if(e.target.textContent === "%"){
+                    if(clickInput.length === 1){
+                        result = Number(clickInput.pop())/100;
+                        clickInput.push(result);
+                    }
+
+                }               
+                
+                else if(e.target.textContent === "/" || e.target.textContent === "x" ||
+                e.target.textContent === "+" || e.target.textContent === "-" ||
+                e.target.textContent === "="){
+                   
+                                       
+                    if(tempNum !== "")
+                        clickInput.push(Number(tempNum));
+                    displayContent = e.target.textContent;                        
+                    
+                    
+
+                    if(clickInput.length === 3){
+                        b = clickInput.pop();
+                        op = clickInput.pop();                        
+                        a = clickInput.pop();                    
+                        result = operator(a, op, b);
+                        clickInput.push(result);
+                        console.log(result);                     
+                        
+                    }
+                   if(e.target.textContent !== "=")
+                        clickInput.push(e.target.textContent);
+                    else
+                        resultP.setAttribute("class","final");   
+                        
+                        console.log("after pushing operator",clickInput); 
+                        tempNum="";    
+                    
+                }
+
+                else{
+                    resultP.setAttribute("class","temporary");                 
+                    tempNum += e.target.textContent;
+                    displayContent = tempNum;    
+  
+                }     
+                
+              entryP.textContent = displayContent;
+               resultP.textContent = result;
+
+            });
         }
 
     }
 }
+
