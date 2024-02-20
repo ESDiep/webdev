@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping list example</title>
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+
+      li button {
+        font-size: 8px;
+        margin-left: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>My shopping list</h1>
+
+    <div>
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="item">
+      <button>Add item</button>
+    </div>
+
+    <ul>
+
+    </ul>
+
+    <script>
+
+
+        
+      const addBtn = document.querySelector("button");
+      const input = document.querySelector("input");
+      const ul = document.querySelector("ul");
+
+      const errorP = document.createElement('p');
+      const division = document.querySelector("div");
+      division.appendChild(errorP); 
+
+      input.focus();
+
+      addBtn.addEventListener("click", addItem);
+
+      function addItem(){
+
+        if(input.value !==""){
+          const li = document.createElement("li");
+          const span = document.createElement("span");
+          const delBtn = document.createElement("button");
+
+          errorP.textContent = "";
+
+          delBtn.textContent = "Delete";
+          span.textContent = input.value.toLowerCase();
+          input.value = "";
+
+          li.appendChild(span);
+          li.appendChild(delBtn);
+
+          delBtn.addEventListener("click", ()=>{
+            li.remove();
+          });
+          
+          ul.appendChild(li);
+          input.focus();
+        }else{
+          
+          errorP.textContent = "Please enter an item";
+          errorP.style.color ='red';
+          
+        }
+
+      }
+    </script>
+  </body>
+</html>
